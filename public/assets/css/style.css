@@ -1,0 +1,21 @@
+.navbar {
+    color: white;
+}
+
+#nav-links-container {
+    color: white;
+}
+
+.jumbotron {
+    background-image: url("../images/jumbotron-background.jpg");
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+}

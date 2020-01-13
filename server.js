@@ -17,6 +17,9 @@ var app = express();
 // Set up an Express Router
 var router = express.Router();
 
+// Set up our Express App router to use our html routes
+require("./config/routes/htmlroutes")(router);
+
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
