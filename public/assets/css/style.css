@@ -2,12 +2,27 @@
     color: white;
 }
 
+.nav-link {
+    color: white;
+}
+
 #nav-links-container {
     color: white;
 }
 
-.jumbotron {
+body {
     background-image: url("../images/jumbotron-background.jpg");
+}
+
+.btn {
+    color: white;
+}
+
+#scrape-new-btn {
+    background-color: pink;
+}
+
+.jumbotron {
 }
 
 footer {
