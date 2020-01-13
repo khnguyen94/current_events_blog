@@ -1,19 +1,21 @@
 // Import dependencies
 var express = require("express");
-var exphbs = require("express-handlebars");
+var bodyParser = require("body-parser");
+var expressHandlebars = require("express-handlebars");
+var mongoose = require("mongoose");
 
 // Import variables
 // Database
 // var db = require("./models");
+
+// Define the port
+var PORT = process.env.PORT || 3000;
 
 // Create an instance of Express app, give it a variable handle
 var app = express();
 
 // Set up an Express Router
 var router = express.Router();
-
-// Define the port
-var PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
@@ -33,13 +35,15 @@ app.use(function(req, res, next) {
   next();
 });
 
-// Have every request go through our Router middleware
-app.use(router);
+// Set up bodyParser to be used in our Express App
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 
-// Handlebars
+// Set up Handlebars connection to Express App
 app.engine(
   "handlebars",
-  exphbs({
+  expressHandlebars({
     defaultLayout: "main"
   })
 );
@@ -56,6 +60,23 @@ var syncOptions = { force: false };
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
+
+// Have every request go through our Router middleware
+app.use(router);
+
+// If deployed, use the deloyed database. Otherwise use the local mongoHeadlines database
+// Set db equal to database URI OR the local database
+var db = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+// Connect mongoose to our database
+mongoose.connect(db, function(err) {
+    if (err) {
+        console.log(err);
+    }
+    else {
+        console.log("mongoose connection is successful");
+    }
+});
 
 // Starting the server
 
