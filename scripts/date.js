@@ -1,21 +1,21 @@
-// Create a function that creates a date
+// Create a function that gets the date
 var makeDate = function() {
-    // Create a variable that is a new date
-    var d = new Date();
+  // Create a variable to hold the date
+  var d = new Date();
 
-    // Create a variable that holds the formatted date, final version of the datetime to be used added to our article object and stored in to db
-    var formattedDate = "";
+  // Create a variable to hold the formattedDate
+  var formattedDate = "";
 
-    // Access d, and format: month, date, and year and add to the formattedDate variable
-    // Month will show up as 0 index by default so add 1 to get actual month
-    formattedDate += (d.getMonth() + 1) + "_"; 
+  // Access d to get: month, date, and year and add to formattedDate
+  // Month is in 0 index so add 1 to get actual month
+  formattedDate += d.getMonth() + 1 + "_";
 
-    formattedDate += d.getDate() + "_"; 
+  formattedDate += d.getDate() + "_";
 
-    formattedDate += d.getFullYear(); 
+  formattedDate += d.getFullYear();
 
-    // Have funtion return the formattedDate variable
-    return formattedDate; 
+  // have the function return the formattedDate
+  return formattedDate; 
 };
 
 // Export makeDate function
