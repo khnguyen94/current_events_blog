@@ -85,3 +85,4 @@ router.get("/comment", function(req, res) {
 });
 
 // Export the router
+module.exports = router; 
